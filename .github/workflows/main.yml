@@ -16,4 +16,4 @@ jobs:
       - name: Install Dependencies
         run: pip install requests
       - name: Run Script
-        run: python boost.py
+        run: python chat_booster.py
