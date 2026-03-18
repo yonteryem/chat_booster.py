@@ -4,31 +4,47 @@ import random
 # CONFIGURATION
 WEBHOOK_URL = "https://discord.com/api/webhooks/1483797389356830791/aMqLzNfDaw4I--PR92SF50ki_c0weLamvgs9SLqEYyHCvgFLpKGVBr9Amn3D8d8uov13"
 
+# Tags
+TAG_MEMBER = "@Member"
+TAG_GUEST = "@𝙜𝙪𝙚𝙨𝙩 ➕"
 
-
-PROFILES = [{"Conversation Starter": f"{n}_{random.randint(10,99)}", "avatar": f"https://i.pravatar.cc/150?u={n}"} for n in NAMES]
-
-# Starters List
-STARTERS = [
-    "How's everyone doing today? {tag}", "What's the funniest thing that happened this week? {tag}",
-    "Favorite color check! Drop yours. {tag}", "What game are we grinding tonight? {tag}",
-    "If you could travel anywhere right now, where? {tag}", "Is a hotdog a sandwich? {tag}",
-    "What's your go-to snack while gaming? {tag}", "Best movie you've seen recently? {tag}",
-    "PC or Console? Let's settle it. {tag}", "What's the most underrated game? {tag}",
-    "What's your favorite season? {tag}", "Night owl or early bird? {tag}",
-    "If you won the lottery, what's the first buy? {tag}", "Keyboard or Controller? {tag}",
-    "What's a hobby you've always wanted to try? {tag}", "What's your favorite animal? {tag}",
-    "Best music to chill to? {tag}", "Who is your favorite superhero? {tag}",
-    "What's your dream job? {tag}", "Chocolate or Vanilla? {tag}",
-    "What's the scariest game you ever played? {tag}", "What's your favorite holiday? {tag}",
-    "Tea or Coffee? {tag}", "What's the best gift you ever got? {tag}",
-    "If you were an ice cream flavor, what would you be? {tag}", "Desktop or Laptop? {tag}",
-    "What's your favorite sport? {tag}", "Marvel or DC? {tag}",
-    "What's the last song you listened to? {tag}", "Do you prefer dogs or cats? {tag}",
-    "What's your favorite pizza topping? {tag}", "Would you rather fly or be invisible? {tag}",
-    "What's the best pizza place? {tag}", "Favorite movie genre? {tag}",
-    "If you could have dinner with any celebrity, who? {tag}", "What's your favorite book? {tag}",
-         # More starters to add
+# 100 Messages
+MESSAGES = [
+    "How's everyone doing today? {tag}",
+    "What's the funniest thing that happened this week? {tag}",
+    "Favorite color check! Drop yours. {tag}",
+    "What game are we grinding tonight? {tag}",
+    "If you could travel anywhere right now, where? {tag}",
+    "Is a hotdog a sandwich? {tag}",
+    "What's your go-to snack while gaming? {tag}",
+    "Best movie you've seen recently? {tag}",
+    "PC or Console? Let's settle it. {tag}",
+    "What's the most underrated game? {tag}",
+    "What's your favorite season? {tag}",
+    "Night owl or early bird? {tag}",
+    "If you won the lottery, what's the first buy? {tag}",
+    "Keyboard or Controller? {tag}",
+    "What's a hobby you've always wanted to try? {tag}",
+    "What's your favorite animal? {tag}",
+    "Best music to chill to? {tag}",
+    "Who is your favorite superhero? {tag}",
+    "What's your dream job? {tag}",
+    "Chocolate or Vanilla? {tag}",
+    "What's the scariest game you ever played? {tag}",
+    "What's your favorite holiday? {tag}",
+    "Tea or Coffee? {tag}",
+    "What's the best gift you ever got? {tag}",
+    "If you were an ice cream flavor, what would you be? {tag}",
+    "Desktop or Laptop? {tag}",
+    "What's your favorite sport? {tag}",
+    "Marvel or DC? {tag}",
+    "What's the last song you listened to? {tag}",
+    "Do you prefer dogs or cats? {tag}",
+    "What's your favorite pizza topping? {tag}",
+    "Would you rather fly or be invisible? {tag}",
+    "Favorite movie genre? {tag}",
+    "If you could have dinner with any celebrity, who? {tag}",
+    "What's your favorite book? {tag}",
     "What's your all time favorite video game? {tag}",
     "What show are you currently binging? {tag}",
     "What's the best console ever made? {tag}",
@@ -75,28 +91,39 @@ STARTERS = [
     "Time travel: past or future? {tag}",
     "What's something you want to learn this year? {tag}",
     "What's your biggest flex? {tag}",
-    "What's the best thing about this server? {tag}",
     "Drop your unpopular opinion. {tag}",
     "What's a random fun fact you know? {tag}",
-    "What would your last meal be? {tag}"
+    "What would your last meal be? {tag}",
+    "What's the best thing about this server? {tag}",
+    "What emoji describes your mood right now? {tag}",
+    "Sneakers or boots? {tag}",
+    "What's your go-to comfort show? {tag}",
+    "If you could master any instrument, what would it be? {tag}",
+    "What's your sleep schedule like? {tag}",
+    "What's the weirdest food combo you actually enjoy? {tag}",
+    "What's your most used emoji? {tag}",
+    "If you had a warning label, what would it say? {tag}",
+    "What's your spirit animal? {tag}",
+    "What fictional universe would you live in? {tag}",
+    "What's the best meme format ever? {tag}",
+    "What's your go-to karaoke song? {tag}",
+    "What's one thing you can't live without? {tag}",
+    "If you could rename yourself, what would you pick? {tag}",
+    "What's your biggest gaming achievement? {tag}",
 ]
 
 def run_booster():
-    profile = random.choice(PROFILES)
-    message = random.choice(STARTERS)
+    message = random.choice(MESSAGES)
 
-    # Random Tags
     roll = random.random()
     if roll < 0.70:
-        tag = "@Member"
+        tag = TAG_MEMBER
     elif roll < 0.90:
-        tag = "@Member @𝙜𝙪𝙚𝙨𝙩 ➕"
+        tag = f"{TAG_MEMBER} {TAG_GUEST}"
     else:
-        tag = "@𝙜𝙪𝙚𝙨𝙩 ➕"
+        tag = TAG_GUEST
 
     payload = {
-        "username": profile["name"],
-        "avatar_url": profile["avatar"],
         "content": message.format(tag=tag),
         "allowed_mentions": {"parse": []}
     }
