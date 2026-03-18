@@ -62,9 +62,9 @@ def run_booster():
     try:
         response = requests.post(WEBHOOK_URL, json=payload)
         response.raise_for_status()
-        print(f"Successfully sent: {message}")
+        print("Message sent successfully!")
     except Exception as e:
-        print(f"Error sending message: {e}")
+        print(f"Error: {e}")
 
 if __name__ == "__main__":
     run_booster()
