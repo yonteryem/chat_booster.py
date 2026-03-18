@@ -1,19 +1,24 @@
 name: Chat Booster
+
 on:
   schedule:
     - cron: '*/30 * * * *'
   workflow_dispatch:
+
 jobs:
   run-script:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+      
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
+          
       - name: Install Dependencies
         run: pip install requests
+        
       - name: Run Script
         run: python chat_booster.py
