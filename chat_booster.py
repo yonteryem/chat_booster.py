@@ -4,14 +4,9 @@ import random
 # CONFIGURATION
 WEBHOOK_URL = "https://discord.com/api/webhooks/1483797389356830791/aMqLzNfDaw4I--PR92SF50ki_c0weLamvgs9SLqEYyHCvgFLpKGVBr9Amn3D8d8uov13"
 
-# 50 Identities
-NAMES = ["Shadow", "Nova", "Cipher", "Vortex", "Pixel", "Zenith", "Alpha", "Omega", "Titan", "Neon",
-         "Frost", "Blaze", "Echo", "Static", "Logic", "Pulse", "Rift", "Viper", "Bolt", "Apex",
-         "Sonic", "Orbit", "Grim", "Flux", "Zero", "Aura", "Koda", "Sync", "Turbo", "Dusk",
-         "Dawn", "Zane", "Ryder", "Axel", "Raven", "Skye", "Blitz", "Comet", "Drift", "Edge",
-         "Hunter", "Sniper", "Ghost", "Glitch", "Circuit", "Spark", "Thunder", "Aero", "Mist", "Stealth"]
 
-PROFILES = [{"name": f"{n}_{random.randint(10,99)}", "avatar": f"https://i.pravatar.cc/150?u={n}"} for n in NAMES]
+
+PROFILES = [{"Conversation Starter": f"{n}_{random.randint(10,99)}", "avatar": f"https://i.pravatar.cc/150?u={n}"} for n in NAMES]
 
 # Starters List
 STARTERS = [
