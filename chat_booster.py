@@ -3,8 +3,7 @@ import random
 
 WEBHOOK_URL = "https://discord.com/api/webhooks/1483797389356830791/aMqLzNfDaw4I--PR92SF50ki_c0weLamvgs9SLqEYyHCvgFLpKGVBr9Amn3D8d8uov13"
 
-
-   MESSAGES = [
+MESSAGES = [
     "How's everyone doing today?",
     "What's the funniest thing that happened this week?",
     "Favorite color check! Drop yours.",
@@ -63,8 +62,12 @@ WEBHOOK_URL = "https://discord.com/api/webhooks/1483797389356830791/aMqLzNfDaw4I
 ]
 
 def run_booster():
-    message = random.choice(MESSAGES)
-    payload = {"content": message}
+    base_message = random.choice(MESSAGES)
+    # Formatted with spaces inside the spoiler tags: || @tag1 @tag2 ||
+    hidden_tags = " || <@&818718468911136808> <@&617287002089455629> ||"
+    
+    payload = {"content": base_message + hidden_tags}
+    
     try:
         response = requests.post(WEBHOOK_URL, json=payload)
         response.raise_for_status()
