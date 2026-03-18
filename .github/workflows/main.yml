@@ -2,18 +2,25 @@ name: Chat Booster
 
 on:
   schedule:
+    # Runs every 30 minutes
     - cron: '*/30 * * * *'
-  workflow_dispatch:
+  workflow_dispatch: # Allows manual start
 
 jobs:
-  run-script:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-      - run: pip install requests
+
+      - name: Install Requests
+        run: pip install requests
+
       - name: Run Script
         env:
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
