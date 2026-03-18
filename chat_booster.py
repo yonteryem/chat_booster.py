@@ -4,7 +4,6 @@ import random
 WEBHOOK_URL = "https://discord.com/api/webhooks/1483797389356830791/aMqLzNfDaw4I--PR92SF50ki_c0weLamvgs9SLqEYyHCvgFLpKGVBr9Amn3D8d8uov13"
 
 MESSAGES = [
-   MESSAGES = [
     "How's everyone doing today? ||@Member @𝙜𝙪𝙚𝙨𝙩 ➕||",
     "What's the funniest thing that happened this week? ||@Member @𝙜𝙪𝙚𝙨𝙩 ➕||",
     "Favorite color check! Drop yours. ||@Member @𝙜𝙪𝙚𝙨𝙩 ➕||",
@@ -56,12 +55,16 @@ MESSAGES = [
     "Who's your favorite anime character? ||@Member @𝙜𝙪𝙚𝙨𝙩 ➕||",
     "What anime needs a season 2? ||@Member @𝙜𝙪𝙚𝙨𝙩 ➕||"
 ]
-]
 
 def run_booster():
     message = random.choice(MESSAGES)
     payload = {"content": message}
-    requests.post(WEBHOOK_URL, json=payload)
+    try:
+        response = requests.post(WEBHOOK_URL, json=payload)
+        response.raise_for_status()
+        print(f"Successfully sent: {message}")
+    except Exception as e:
+        print(f"Error sending message: {e}")
 
 if __name__ == "__main__":
     run_booster()
