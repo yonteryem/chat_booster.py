@@ -1,24 +1,23 @@
 import requests
 import random
-import os
 
-# Fetches the URL from your GitHub Secrets
-WEBHOOK_URL = os.getenv("https://discord.com/api/webhooks/1483797389356830791/aMqLzNfDaw4I--PR92SF50ki_c0weLamvgs9SLqEYyHCvgFLpKGVBr9Amn3D8d8uov13")
+# CONFIGURATION
+WEBHOOK_URL = "https://discord.com/api/webhooks/1483797389356830791/aMqLzNfDaw4I--PR92SF50ki_c0weLamvgs9SLqEYyHCvgFLpKGVBr9Amn3D8d8uov13"
 
-# Role IDs - REPLACE THESE NUMBERS with your actual Discord Role IDs
-# To get them, type \@Member and \@guest in Discord
-MEMBER_ID = "123456789012345678" 
-GUEST_ID = "876543210987654321"
+# Replace these numbers with your actual Role IDs (Right-click role -> Copy ID)
+MEMBER_ID = "1234567890" 
+GUEST_ID = "0987654321"
 
-# 50 Generic Identity Profiles
+# 50 Identities
 NAMES = ["Shadow", "Nova", "Cipher", "Vortex", "Pixel", "Zenith", "Alpha", "Omega", "Titan", "Neon", 
          "Frost", "Blaze", "Echo", "Static", "Logic", "Pulse", "Rift", "Viper", "Bolt", "Apex", 
          "Sonic", "Orbit", "Grim", "Flux", "Zero", "Aura", "Koda", "Sync", "Turbo", "Dusk", 
-         "Dawn", "Zane", "Ryder", "Axel", "Raven", "Skye", "Blitz", "Comet", "Drift", "Edge"]
+         "Dawn", "Zane", "Ryder", "Axel", "Raven", "Skye", "Blitz", "Comet", "Drift", "Edge",
+         "Hunter", "Sniper", "Ghost", "Glitch", "Circuit", "Spark", "Thunder", "Aero", "Mist", "Stealth"]
 
 PROFILES = [{"name": f"{n}_{random.randint(10,99)}", "avatar": f"https://i.pravatar.cc/150?u={n}"} for n in NAMES]
 
-# Huge List of Conversation Starters
+# Huge Starters List
 STARTERS = [
     "How's everyone doing today? {tag}", "What's the funniest thing that happened this week? {tag}",
     "Favorite color check! Drop yours. {tag}", "What game are we grinding tonight? {tag}",
@@ -35,14 +34,16 @@ STARTERS = [
     "If you were an ice cream flavor, what would you be? {tag}", "Desktop or Laptop? {tag}",
     "What's your favorite sport? {tag}", "Marvel or DC? {tag}",
     "What's the last song you listened to? {tag}", "Do you prefer dogs or cats? {tag}",
-    "What's your favorite pizza topping? {tag}", "Would you rather fly or be invisible? {tag}"
+    "What's your favorite pizza topping? {tag}", "Would you rather fly or be invisible? {tag}",
+    "What's the best pizza place? {tag}", "Favorite movie genre? {tag}",
+    "If you could have dinner with any celebrity, who? {tag}", "What's your favorite book? {tag}"
 ]
 
 def run_booster():
     profile = random.choice(PROFILES)
     message = random.choice(STARTERS)
     
-    # Tag Logic: 70% Member, 20% Both, 10% Guest
+    # Random Tags
     roll = random.random()
     if roll < 0.70:
         tag = f"<@&{MEMBER_ID}>"
