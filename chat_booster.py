@@ -1,7 +1,7 @@
 import requests
 import random
 
-WEBHOOK_URL = "https://discord.com/api/webhooks/1483797389356830791/aMqLzNfDaw4I--PR92SF50ki_c0weLamvgs9SLqEYyHCvgFLpKGVBr9Amn3D8d8uov13"
+WEBHOOK_URL = "https://discord.com/api/webhooks/1486307521009291304/nSBOOm1FmK3PLxRaJoVYpGzhM0EKFBGP6ds2VP-28YbYHvIrEf-GjYIRmX-D-aIr3ihL"
 
 MESSAGES = [
     "How's everyone doing today?",
